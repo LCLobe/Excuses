@@ -5,7 +5,42 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
+window.onload = () => {
   //write your code here
-  console.log("Hello Rigo from the console!");
+  let randomNumber = Math.random() * 10;
+  console.log("Hello Rigo from the console!" + randomNumber);
+  const theExcuse = document.querySelector("#the-excuse");
+
+  theExcuse.innerHTML = generateExcuse();
+
+  document.querySelector("#btn").addEventListener("click", () => {
+    theExcuse.innerHTML = generateExcuse();
+  });
 };
+
+function generateExcuse() {
+  let who = ["the dog", "my grandma", "his turtle", "my bird"];
+  let action = ["ate", "peed", "crushed", "broke"];
+  let what = ["my homework", "the keys", "the car"];
+  let when = [
+    "before the class.",
+    "right on time.",
+    "when I finished.",
+    "during my lunch.",
+    "while I was praying.",
+  ];
+
+  let whoIndx = Math.floor(Math.random() * who.length);
+  let actionIndx = Math.floor(Math.random() * action.length);
+  let whatIndx = Math.floor(Math.random() * what.length);
+  let whenIndx = Math.floor(Math.random() * when.length);
+
+  let excuse = "";
+  excuse += " " + who[whoIndx];
+  excuse += " " + action[actionIndx];
+  excuse += " " + what[whatIndx];
+  excuse += " " + when[whenIndx];
+
+  console.log(excuse);
+  return excuse;
+}
